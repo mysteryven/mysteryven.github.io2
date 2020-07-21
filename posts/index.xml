@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Mysteryven&#39;s Blog</title>
+    <link>https://mysteryven.com/posts/</link>
+    <description>Recent content in Posts on Mysteryven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jul 2020 10:35:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://mysteryven.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>认识js中的proxy</title>
+      <link>https://mysteryven.com/2020/%E8%AE%A4%E8%AF%86js%E4%B8%AD%E7%9A%84proxy/</link>
+      <pubDate>Tue, 21 Jul 2020 10:35:23 +0800</pubDate>
+      
+      <guid>https://mysteryven.com/2020/%E8%AE%A4%E8%AF%86js%E4%B8%AD%E7%9A%84proxy/</guid>
+      <description>测试</description>
+    </item>
+    
+  </channel>
+</rss>

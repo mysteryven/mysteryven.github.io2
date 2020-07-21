@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="mysteryven">
+  
+  <meta name="keywords" content="mysteryven">
+  
+  <link rel="prev" href="https://mysteryven.com/_posts/%E4%B8%BA%E4%BB%80%E4%B9%88react%E4%B8%AD%E7%9A%84%E8%99%9A%E6%8B%9Fdom%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD/" />
+  <link rel="next" href="https://mysteryven.com/_posts/java%E7%9A%84collection%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93/" />
+  <link rel="canonical" href="https://mysteryven.com/_posts/%E8%A7%A3%E5%86%B3maven%E5%86%B2%E7%AA%81%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           解决 Maven 冲突的经验总结 | Mysteryven&#39;s Blog
+       
+  </title>
+  <meta name="title" content="解决 Maven 冲突的经验总结 | Mysteryven&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/mysteryven.com"
+    },
+    "articleSection" : "_posts",
+    "name" : "解决 Maven 冲突的经验总结",
+    "headline" : "解决 Maven 冲突的经验总结",
+    "description" : "\x3cp\x3e包管理工作的本质就是告诉 JVM 它需要的第三方的类库在哪，并且当遇到包冲突的时候，来解决它。Maven 就是其中的一个包管理工具。\x3c\/p\x3e",
+    "inLanguage" : "en-us",
+    "author" : "mysteryven",
+    "creator" : "mysteryven",
+    "publisher": "mysteryven",
+    "accountablePerson" : "mysteryven",
+    "copyrightHolder" : "mysteryven",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-03 12:47:48 \x2b0800 CST",
+    "dateModified" : "2020-02-03 12:47:48 \x2b0800 CST",
+    "url" : "https:\/\/mysteryven.com\/_posts\/%E8%A7%A3%E5%86%B3maven%E5%86%B2%E7%AA%81%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93\/",
+    "wordCount" : "91",
+    "keywords" : [  "Mysteryven\x27s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://mysteryven.com">Mysteryven&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Post</a>
+                
+                <a class="menu-item" href="/articles/" title="">Articles</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171080709-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-171080709-1');
+</script>
+
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://mysteryven.com">Mysteryven&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Post</a>
+                
+                <a class="menu-item" href="/articles/" title="">Articles</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">解决 Maven 冲突的经验总结</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://mysteryven.com" rel="author">mysteryven</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-02-03 itemprop="datePublished">February 3, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>包管理工作的本质就是告诉 JVM 它需要的第三方的类库在哪，并且当遇到包冲突的时候，来解决它。Maven 就是其中的一个包管理工具。</p>
+<h2 id="maven-处理包冲突的默认规则">Maven 处理包冲突的默认规则</h2>
+<p>在遇到包冲突的时候，包管理工具都有自己的一套规则，Maven 也有，有时候能解决，这时候我们是无感知的；但是有时候解决不了，就会在编译或者运行的时候抛出错误。</p>
+<p>为了更准确、更快的找出包冲突的原因，我们需要先了解 Maven 处理包冲突的机制，从而才能进一步分析是什么问题导致了包冲突。</p>
+<p>首先，对 Maven 来说，它决不允许传给 JVM 的 ClassPath 出现同名不同版本的 jar 包，如果出现了， Maven 按照以下两个规则来处理：</p>
+<ol>
+<li>谁离得近选择谁，比如 <code>B-&gt;C vs D-&gt;A-&gt;C</code> ，这时候如果用到 C 包的地方都会选择 B 后面的 C。</li>
+<li>如果离得同样近，谁先被找到选择谁。比如 <code>B -&gt; C vs D -&gt; C</code> ，我们会选择 B 后面的 C。</li>
+</ol>
+<p>总之，「最近」的胜出。</p>
+<p>通常来说，我们依据上面两条规则，再加上报错信息，耐心的找，总能找出是哪个包导致了错误。当我们找到了错误怎么去解决呢？</p>
+<h2 id="手动解决包冲突的方法">手动解决包冲突的方法</h2>
+<p>假设我们已经找到了问题包是哪个，假设这个包名叫做 A。</p>
+<h3 id="方法一">方法一</h3>
+<p>既然「最近」的会胜出，那我们把正确的包 A 放在 pom 文件的最外层就好了，那每次都会查找到这个正确的 A。</p>
+<h3 id="方法二">方法二</h3>
+<p>我们还可以使用 Maven 的 <code>exclusion</code> 语法。</p>
+<p>假设 B 包里引用了 A ，这是我们不想要的，我们可以使用如下语法，不让 B 使用它自己引用的 A。</p>
+<pre><code>&lt;dependency&gt;
+  // 包 B
+  &lt;groupId&gt;xxx&lt;groupId&gt;
+  .....
+
+  &lt;exclusion&gt;
+    // 包 A
+  &lt;/exclusion&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="方法三">方法三</h3>
+<p>如果你在使用 Idea，可以借助 Maven helper 这个插件，这里的具体操作就不演示了。</p>
+<p>以上就是 Maven 包冲突的一些常见的解决方案的总结，希望能帮到你。</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>mysteryven </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://mysteryven.com/_posts/%E8%A7%A3%E5%86%B3maven%E5%86%B2%E7%AA%81%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/>https://mysteryven.com/_posts/%E8%A7%A3%E5%86%B3maven%E5%86%B2%E7%AA%81%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://mysteryven.com">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://mysteryven.com/_posts/%E4%B8%BA%E4%BB%80%E4%B9%88react%E4%B8%AD%E7%9A%84%E8%99%9A%E6%8B%9Fdom%E5%8F%AF%E4%BB%A5%E6%8F%90%E9%AB%98%E6%80%A7%E8%83%BD/" class="prev" rel="prev" title="理解React中的虚拟DOM"><i class="iconfont icon-left"></i>&nbsp;理解React中的虚拟DOM</a>
+         
+        
+        <a href="https://mysteryven.com/_posts/java%E7%9A%84collection%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93/" class="next" rel="next" title="Java 的 Collection 体系总结">Java 的 Collection 体系总结&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://mysteryven.com">mysteryven</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
