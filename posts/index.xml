@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Mysteryven&#39;s Blog</title>
+    <link>https://mysteryven.com/posts/</link>
+    <description>Recent content in Posts on Mysteryven&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jul 2020 13:25:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://mysteryven.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 SSH 的方式连接远端服务器</title>
+      <link>https://mysteryven.com/2020/use-ssh-to-connect-remote-host/</link>
+      <pubDate>Tue, 21 Jul 2020 13:25:40 +0800</pubDate>
+      
+      <guid>https://mysteryven.com/2020/use-ssh-to-connect-remote-host/</guid>
+      <description>每次在连接远端服务器的时候都需要输入密码，这是一件很头疼的事情，配置了 SSH 连接就可以完美的解决这件事情。
+我们不需要输入密码就能直接建立起与服务器的连接，并且配置的过程也非常简单，丝滑。
+如果你已经在本机生成过 SSH 了，比如已经配置过 Github 或 Gitlab 的 ssh 权限，你可以直接从第 3 步开始做。
+ 如果你忘记自己是否生成过，可以先用这个命令检测一下，有的话跳到第 3 步即可：  ls -al ~/.ssh/id_*.pub 没有的话，执行下面这个生成命令，输入上面命令后不会立马完成，而是会让你进行一些自定义配置，不懂的话，直接回车就好了。：  ssh-keygen -t rsa -b 4096 -C &amp;#34;your_email@domain.com&amp;#34; # 引号里面输入你的邮箱 SSH 生成之后，我们就可以配置连接了。可以使用 ssh-copy-id 这个命令快捷的将 SSH 配置到自己的服务器，具体的使用方法：  ssh-copy-id remote_username@server_ip_address # 若没设置过，remote_username 就是 root 了  接下来会提示你输入密码，如果你使用阿里云的话，这个密码就是你的实例密码。第一次登录需要输入密码，之后服务器会自动帮你配置好 SSH，后面就不用再输入密码就直接登录了。
+  特殊的情况，你的本地机器上没有 ssh-copy-id 这个命令，那可以使用下面这个命令手动拷贝：
+  cat ~/.ssh/id_rsa.pub | ssh remote_username@server_ip_address &amp;#34;mkdir -p ~/.ssh &amp;amp;&amp;amp; chmod 700 ~/.ssh &amp;amp;&amp;amp; cat &amp;gt;&amp;gt; ~/.</description>
+    </item>
+    
+  </channel>
+</rss>
