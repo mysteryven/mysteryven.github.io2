@@ -6,10 +6,24 @@
     <description>Recent content in Posts on Mysteryven&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jul 2020 13:25:40 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2020 09:50:21 +0800</lastBuildDate>
     
 	<atom:link href="https://mysteryven.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker 实战</title>
+      <link>https://mysteryven.com/2020/docker-in-action/</link>
+      <pubDate>Thu, 27 Aug 2020 09:50:21 +0800</pubDate>
+      
+      <guid>https://mysteryven.com/2020/docker-in-action/</guid>
+      <description>概述 Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了。如果你经历过没有 Docker 部署服务器的年代，你肯定大呼，Docker 拯救了你的生命。
+关于 Docker 每个命令如何使用，我相信在你下载 Docker 之后，学会以后 docker [OPTIONS] --help 来查手册，就基本可以全部了解了。但最难的是哪一部分呢？是不知道 Docker 的使用场景是什么，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。
+今天，我们就来分享三个场景，通过这三个场景，我们就能大致了解 Docker 能做什么，它的边界在哪，在需要用到的时候就可以随时拿出来用了。
+配置开发环境   如果你不能 FQ，需要先结合这篇文章，配置 brew 的国内镜像。
+  安装 Docker
+  brew cask install docker 启动一个 Node 服务器 实现持久化存储 在服务端部署负载均衡器 </description>
+    </item>
     
     <item>
       <title>使用 SSH 的方式连接远端服务器</title>

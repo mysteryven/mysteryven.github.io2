@@ -9,9 +9,9 @@
   
   
   
+  <link rel="prev" href="https://mysteryven.com/2020/use-ssh-to-connect-remote-host/" />
   
-  <link rel="next" href="https://mysteryven.com/2020/docker-in-action/" />
-  <link rel="canonical" href="https://mysteryven.com/2020/use-ssh-to-connect-remote-host/" />
+  <link rel="canonical" href="https://mysteryven.com/2020/docker-in-action/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           使用 SSH 的方式连接远端服务器 | Mysteryven&#39;s Blog
+           Docker 实战 | Mysteryven&#39;s Blog
        
   </title>
-  <meta name="title" content="使用 SSH 的方式连接远端服务器 | Mysteryven&#39;s Blog">
+  <meta name="title" content="Docker 实战 | Mysteryven&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/mysteryven.com"
     },
     "articleSection" : "posts",
-    "name" : "使用 SSH 的方式连接远端服务器",
-    "headline" : "使用 SSH 的方式连接远端服务器",
-    "description" : "每次在连接远端服务器的时候都需要输入密码，这是一件很头疼的事情，配置了 SSH 连接就可以完美的解决这件事情。\n我们不需要输入密码就能直接建立起与服务器的连接，并且配置的过程也非常简单，丝滑。\n如果你已经在本机生成过 SSH 了，比如已经配置过 Github 或 Gitlab 的 ssh 权限，你可以直接从第 3 步开始做。\n 如果你忘记自己是否生成过，可以先用这个命令检测一下，有的话跳到第 3 步即可：  ls -al ~\/.ssh\/id_*.pub 没有的话，执行下面这个生成命令，输入上面命令后不会立马完成，而是会让你进行一些自定义配置，不懂的话，直接回车就好了。：  ssh-keygen -t rsa -b 4096 -C \x26#34;your_email@domain.com\x26#34; # 引号里面输入你的邮箱 SSH 生成之后，我们就可以配置连接了。可以使用 ssh-copy-id 这个命令快捷的将 SSH 配置到自己的服务器，具体的使用方法：  ssh-copy-id remote_username@server_ip_address # 若没设置过，remote_username 就是 root 了  接下来会提示你输入密码，如果你使用阿里云的话，这个密码就是你的实例密码。第一次登录需要输入密码，之后服务器会自动帮你配置好 SSH，后面就不用再输入密码就直接登录了。\n  特殊的情况，你的本地机器上没有 ssh-copy-id 这个命令，那可以使用下面这个命令手动拷贝：\n  cat ~\/.ssh\/id_rsa.pub | ssh remote_username@server_ip_address \x26#34;mkdir -p ~\/.ssh \x26amp;\x26amp; chmod 700 ~\/.ssh \x26amp;\x26amp; cat \x26gt;\x26gt; ~\/.",
+    "name" : "Docker 实战",
+    "headline" : "Docker 实战",
+    "description" : "概述 Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了。如果你经历过没有 Docker 部署服务器的年代，你肯定大呼，Docker 拯救了你的生命。\n关于 Docker 每个命令如何使用，我相信在你下载 Docker 之后，学会以后 docker [OPTIONS] --help 来查手册，就基本可以全部了解了。但最难的是哪一部分呢？是不知道 Docker 的使用场景是什么，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。\n今天，我们就来分享三个场景，通过这三个场景，我们就能大致了解 Docker 能做什么，它的边界在哪，在需要用到的时候就可以随时拿出来用了。\n配置开发环境   如果你不能 FQ，需要先结合这篇文章，配置 brew 的国内镜像。\n  安装 Docker\n  brew cask install docker 启动一个 Node 服务器 实现持久化存储 在服务端部署负载均衡器 ",
     "inLanguage" : "en-us",
     "author" : "mysteryven",
     "creator" : "mysteryven",
@@ -54,10 +54,10 @@
     "accountablePerson" : "mysteryven",
     "copyrightHolder" : "mysteryven",
     "copyrightYear" : "2020",
-    "datePublished": "2020-07-21 13:25:40 \x2b0800 CST",
-    "dateModified" : "2020-07-21 13:25:40 \x2b0800 CST",
-    "url" : "https:\/\/mysteryven.com\/2020\/use-ssh-to-connect-remote-host\/",
-    "wordCount" : "69",
+    "datePublished": "2020-08-27 09:50:21 \x2b0800 CST",
+    "dateModified" : "2020-08-27 09:50:21 \x2b0800 CST",
+    "url" : "https:\/\/mysteryven.com\/2020\/docker-in-action\/",
+    "wordCount" : "38",
     "keywords" : [  "Mysteryven\x27s Blog"]
 }
 </script>
@@ -126,11 +126,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">使用 SSH 的方式连接远端服务器</h1>
+        <h1 class="post-title" itemprop="name headline">Docker 实战</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://mysteryven.com" rel="author">mysteryven</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2020-07-21 itemprop="datePublished">July 21, 2020</time>
+                on <time datetime=2020-08-27 itemprop="datePublished">August 27, 2020</time>
                 </span>
                 in
                 
@@ -152,31 +152,24 @@
           
           
 
-          <p>每次在连接远端服务器的时候都需要输入密码，这是一件很头疼的事情，配置了 SSH 连接就可以完美的解决这件事情。</p>
-<p>我们不需要输入密码就能直接建立起与服务器的连接，并且配置的过程也非常简单，丝滑。</p>
-<p>如果你已经在本机生成过 SSH 了，比如已经配置过 Github 或 Gitlab 的 ssh 权限，你可以直接从第 3 步开始做。</p>
+          <h2 id="概述">概述</h2>
+<p>Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了。如果你经历过没有 Docker 部署服务器的年代，你肯定大呼，Docker 拯救了你的生命。</p>
+<p>关于 Docker 每个命令如何使用，我相信在你下载 Docker 之后，学会以后 <code>docker [OPTIONS] --help</code> 来查手册，就基本可以全部了解了。但最难的是哪一部分呢？是不知道 Docker 的使用场景是什么，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。</p>
+<p>今天，我们就来分享三个场景，通过这三个场景，我们就能大致了解 Docker 能做什么，它的边界在哪，在需要用到的时候就可以随时拿出来用了。</p>
+<h2 id="配置开发环境">配置开发环境</h2>
 <ol>
-<li>如果你忘记自己是否生成过，可以先用这个命令检测一下，有的话跳到第 3 步即可：</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -al ~/.ssh/id_*.pub
-</code></pre></div><ol start="2">
-<li>没有的话，执行下面这个生成命令，输入上面命令后不会立马完成，而是会让你进行一些自定义配置，不懂的话，直接回车就好了。：</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b <span style="color:#ae81ff">4096</span> -C <span style="color:#e6db74">&#34;your_email@domain.com&#34;</span> <span style="color:#75715e"># 引号里面输入你的邮箱</span>
-</code></pre></div><ol start="3">
-<li>SSH 生成之后，我们就可以配置连接了。可以使用  <code>ssh-copy-id</code>  这个命令快捷的将 SSH 配置到自己的服务器，具体的使用方法：</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-copy-id remote_username@server_ip_address <span style="color:#75715e"># 若没设置过，remote_username 就是 root 了</span>
-</code></pre></div><ol start="4">
 <li>
-<p>接下来会提示你输入密码，如果你使用阿里云的话，这个密码就是你的实例密码。第一次登录需要输入密码，之后服务器会自动帮你配置好 SSH，后面就不用再输入密码就直接登录了。</p>
+<p>如果你不能 FQ，需要先结合<a href="https://zhuanlan.zhihu.com/p/90508170">这篇文章</a>，配置 brew 的国内镜像。</p>
 </li>
 <li>
-<p>特殊的情况，你的本地机器上没有 <code>ssh-copy-id</code> 这个命令，那可以使用下面这个命令手动拷贝：</p>
+<p>安装 Docker</p>
 </li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat ~/.ssh/id_rsa.pub | ssh remote_username@server_ip_address <span style="color:#e6db74">&#34;mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys&#34;</span>
-</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew cask install docker
+</code></pre></div><h2 id="启动一个-node-服务器">启动一个 Node 服务器</h2>
+<h2 id="实现持久化存储">实现持久化存储</h2>
+<h2 id="在服务端部署负载均衡器">在服务端部署负载均衡器</h2>
+
     </div>
 
     <div class="post-copyright">
@@ -190,7 +183,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://mysteryven.com/2020/use-ssh-to-connect-remote-host/>https://mysteryven.com/2020/use-ssh-to-connect-remote-host/</span>
+                    <a href=https://mysteryven.com/2020/docker-in-action/>https://mysteryven.com/2020/docker-in-action/</span>
             </p>
             
              
@@ -210,9 +203,9 @@
     </div>
 
     <div class="post-nav">
-         
         
-        <a href="https://mysteryven.com/2020/docker-in-action/" class="next" rel="next" title="Docker 实战">Docker 实战&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://mysteryven.com/2020/use-ssh-to-connect-remote-host/" class="prev" rel="prev" title="使用 SSH 的方式连接远端服务器"><i class="iconfont icon-left"></i>&nbsp;使用 SSH 的方式连接远端服务器</a>
+         
         
     </div>
 
