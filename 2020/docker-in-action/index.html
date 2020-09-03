@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Docker 实战",
     "headline" : "Docker 实战",
-    "description" : "概述 Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了。如果你经历过没有 Docker 部署服务器的年代，你肯定大呼，Docker 拯救了你的生命。\n关于 Docker 每个命令如何使用，我相信在你下载 Docker 之后，学会以后 docker [OPTIONS] --help 来查手册，就基本可以全部了解了。但最难的是哪一部分呢？是不知道 Docker 的使用场景是什么，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。\n今天，我们就来分享三个场景，通过这三个场景，我们就能大致了解 Docker 能做什么，它的边界在哪，在需要用到的时候就可以随时拿出来用了。\n配置开发环境   如果你不能 FQ，需要先结合这篇文章，配置 brew 的国内镜像。\n  安装 Docker\n  brew cask install docker 启动一个 Node 服务器 实现持久化存储 在服务端部署负载均衡器 ",
+    "description" : "概述 Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。\n今天，我们就来分享三个场景，通过这三个场景，我们就能大致了解 Docker 能做什么，它的边界在哪，在需要用到的时候就可以随时拿出来用了。\n配置开发环境   如果你能 FQ，可以跳过这一步，如果你不能 FQ，需要先结合这篇文章，配置 brew 的国内镜像。\n  安装 Docker\n  brew cask install docker 配套文件 这是我们的配套代码地址，你可以先 clone 下来。\n启动一个 Node 服务器 请先进入 simple-node-server 这个文件夹。\n如果没有 Docker，如何启动一个 Node 器呢？\n这件事情很简单，只需要把下面这段代码保存为一个独立的文件，如 app.js，然后在这个文件的目录运行 node app.js 就可以了。\nconst http = require(\x26#39;http\x26#39;); const hostname = \x26#39;127.0.0.1\x26#39;; const port = 3000; const server = http.createServer((req, res) =\x26gt; { res.statusCode = 200; res.setHeader(\x26#39;Content-Type\x26#39;, \x26#39;text\/plain\x26#39;); res.end(\x26#39;Hello World\x26#39;); }); server.",
     "inLanguage" : "en-us",
     "author" : "mysteryven",
     "creator" : "mysteryven",
@@ -57,7 +57,7 @@
     "datePublished": "2020-08-27 09:50:21 \x2b0800 CST",
     "dateModified" : "2020-08-27 09:50:21 \x2b0800 CST",
     "url" : "https:\/\/mysteryven.com\/2020\/docker-in-action\/",
-    "wordCount" : "38",
+    "wordCount" : "143",
     "keywords" : [  "Mysteryven\x27s Blog"]
 }
 </script>
@@ -153,23 +153,57 @@
           
 
           <h2 id="概述">概述</h2>
-<p>Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了。如果你经历过没有 Docker 部署服务器的年代，你肯定大呼，Docker 拯救了你的生命。</p>
-<p>关于 Docker 每个命令如何使用，我相信在你下载 Docker 之后，学会以后 <code>docker [OPTIONS] --help</code> 来查手册，就基本可以全部了解了。但最难的是哪一部分呢？是不知道 Docker 的使用场景是什么，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。</p>
+<p>Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。</p>
 <p>今天，我们就来分享三个场景，通过这三个场景，我们就能大致了解 Docker 能做什么，它的边界在哪，在需要用到的时候就可以随时拿出来用了。</p>
 <h2 id="配置开发环境">配置开发环境</h2>
 <ol>
 <li>
-<p>如果你不能 FQ，需要先结合<a href="https://zhuanlan.zhihu.com/p/90508170">这篇文章</a>，配置 brew 的国内镜像。</p>
+<p>如果你能 FQ，可以跳过这一步，如果你不能 FQ，需要先结合<a href="https://zhuanlan.zhihu.com/p/90508170">这篇文章</a>，配置 brew 的国内镜像。</p>
 </li>
 <li>
 <p>安装 Docker</p>
 </li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew cask install docker
-</code></pre></div><h2 id="启动一个-node-服务器">启动一个 Node 服务器</h2>
-<h2 id="实现持久化存储">实现持久化存储</h2>
-<h2 id="在服务端部署负载均衡器">在服务端部署负载均衡器</h2>
+</code></pre></div><h2 id="配套文件">配套文件</h2>
+<p>这是我们的配套代码地址，你可以先 clone 下来。</p>
+<h2 id="启动一个-node-服务器">启动一个 Node 服务器</h2>
+<p>请先进入 <code>simple-node-server</code> 这个文件夹。</p>
+<p>如果没有 Docker，如何启动一个 Node 器呢？</p>
+<p>这件事情很简单，只需要把下面这段代码保存为一个独立的文件，如 <code>app.js</code>，然后在这个文件的目录运行 <code>node app.js</code> 就可以了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
 
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hostname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;127.0.0.1&#39;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>((<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>;
+  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;text/plain&#39;</span>);
+  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;Hello World&#39;</span>);
+});
+
+<span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">port</span>, <span style="color:#a6e22e">hostname</span>, () =&gt; {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Server running at http://</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">hostname</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/`</span>);
+});
+</code></pre></div><p>代码来自于<a href="https://nodejs.org/en/docs/guides/getting-started-guide/">这个网址</a></p>
+<p>使用 Docker 也可以完成这件事，不过我们需要修改一些地方。我们需要把 hostname 的值修改为 0.0.0.0。</p>
+<p>然后运行如下命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it -v <span style="color:#e6db74">&#34;</span>$PWD<span style="color:#e6db74">&#34;</span>:/usr/src/app  node:14 node app.js
+</code></pre></div><p>之后，你通过浏览器访问 <code>localhost:3001</code> 就同样可以访问的启动的服务器。</p>
+<p>我们来解析一下这个命令，每次使用 <code>docker run</code> 命令都会启动一个 Docker 容器，而一个容器，就可以被看做一个独立的主机。<code>-v</code> 做的是本地与此容器之间的文件映射，node:14 自然就是指定我们将使用 node 这个镜像，而 node 的版本是 14。在此之后的命令便是启动好容器之后要运行的命令。</p>
+<p>除了 <code>docker run</code> 命令外，我们还可以通过另外一种 docker build 运行一个容器。</p>
+<h2 id="实现持久化存储">实现持久化存储</h2>
+<p>我们来看第二个例子。请进入 <code>node-with-db</code> 这个文件夹。</p>
+<p>我们将直接使用 Docker 来启动这个服务</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it node:14 node app.js
+</code></pre></div><h2 id="在服务端部署负载均衡器">在服务端部署负载均衡器</h2>
+<p>进入我们的文件夹 <code>load-balancing-with-nginx</code></p>
+<p>如果有一天突然有很多人访问访问你的服务器，可能就会由于人数太多挂掉了，这时候有个简单粗暴的解决方案就是加机器，人数多了就分流几个机器，就不至于让机器的负荷过大。下面我们就有 Docker 来配置一下这个场景。</p>
+<p>我们可以使用 Docker 启动三个服务，依次运行 app-8080.js 、app.8081.js 、 app.8082.js。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+</code></pre></div><p>接下来我们配置 nginx</p>
+<pre><code>
+</code></pre>
     </div>
 
     <div class="post-copyright">

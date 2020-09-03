@@ -17,12 +17,15 @@
       <pubDate>Thu, 27 Aug 2020 09:50:21 +0800</pubDate>
       
       <guid>https://mysteryven.com/2020/docker-in-action/</guid>
-      <description>概述 Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了。如果你经历过没有 Docker 部署服务器的年代，你肯定大呼，Docker 拯救了你的生命。
-关于 Docker 每个命令如何使用，我相信在你下载 Docker 之后，学会以后 docker [OPTIONS] --help 来查手册，就基本可以全部了解了。但最难的是哪一部分呢？是不知道 Docker 的使用场景是什么，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。
+      <description>概述 Docker 对很多前端程序员比较陌生，究其原因，是我们可以使用到他的场景实在是太少了，以至于在可以使用 Docker 的时候往往选择了其他麻烦的方法。
 今天，我们就来分享三个场景，通过这三个场景，我们就能大致了解 Docker 能做什么，它的边界在哪，在需要用到的时候就可以随时拿出来用了。
-配置开发环境   如果你不能 FQ，需要先结合这篇文章，配置 brew 的国内镜像。
+配置开发环境   如果你能 FQ，可以跳过这一步，如果你不能 FQ，需要先结合这篇文章，配置 brew 的国内镜像。
   安装 Docker
-  brew cask install docker 启动一个 Node 服务器 实现持久化存储 在服务端部署负载均衡器 </description>
+  brew cask install docker 配套文件 这是我们的配套代码地址，你可以先 clone 下来。
+启动一个 Node 服务器 请先进入 simple-node-server 这个文件夹。
+如果没有 Docker，如何启动一个 Node 器呢？
+这件事情很简单，只需要把下面这段代码保存为一个独立的文件，如 app.js，然后在这个文件的目录运行 node app.js 就可以了。
+const http = require(&amp;#39;http&amp;#39;); const hostname = &amp;#39;127.0.0.1&amp;#39;; const port = 3000; const server = http.createServer((req, res) =&amp;gt; { res.statusCode = 200; res.setHeader(&amp;#39;Content-Type&amp;#39;, &amp;#39;text/plain&amp;#39;); res.end(&amp;#39;Hello World&amp;#39;); }); server.</description>
     </item>
     
     <item>
